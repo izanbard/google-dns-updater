@@ -1,14 +1,8 @@
 version: '3'
 services:
-  rx-control:
+  dns-updater:
     image: python:latest
     restart: always
     volumes:
-      - ./targets.json:/config/targets.json
-      - ./creds.json:/config/creds.json
-      - ./dns_state.pickle:/config/dns_state.pickle
-    environment:
-      - DNS_UPDATER_CREDENTIALS_FILE=/config/creds.json
-      - DNS_UPDATER_TARGETS_FILE=/config/targets.json
-      - DNS_UPDATER_PICKLE_FILE=/config/dns_state.pickle
-    command: "/bin/sh -c 'cd /rx; ./initiate.sh'"
+      - /home/pi/google-dns-updater:/updater
+    command: "/bin/sh -c 'cd /updater; ./initiate.sh'"
