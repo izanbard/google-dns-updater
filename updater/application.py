@@ -6,7 +6,7 @@ from pathlib import Path
 
 from .dns_state import DNSState
 from .credentials import Credentials
-
+from . import logger
 
 class Application:
     def __init__(self, raw_args: [str]):
@@ -32,6 +32,7 @@ class Application:
 
     def close(self):
         self.dns_state.last_address = self.dns_state.address
+        logger.info("...Complete!")
         with open(Path(self.args.pickle_file), "wb") as fd:
             pickle.dump(self.dns_state, fd)
 
