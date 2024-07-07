@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 pip install -r requirements.txt
-while [$? -eq 0]
+while :
 do
   python -m updater
   sleep 300
