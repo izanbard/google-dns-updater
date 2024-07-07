@@ -4,7 +4,11 @@ services:
     image: python:latest
     restart: always
     volumes:
-      - ./targets.json:./targets.json
-      - ./creds.json:./creds.json
-      - ./dns_state.pickle:./dns_state.pickle
+      - ./targets.json:/config/targets.json
+      - ./creds.json:/config/creds.json
+      - ./dns_state.pickle:/config/dns_state.pickle
+    environment:
+      - DNS_UPDATER_CREDENTIALS_FILE=/config/creds.json
+      - DNS_UPDATER_TARGETS_FILE=/config/targets.json
+      - DNS_UPDATER_PICKLE_FILE=/config/dns_state.pickle
     command: "/bin/sh -c 'cd /rx; ./initiate.sh'"
