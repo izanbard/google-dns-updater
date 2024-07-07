@@ -1,6 +1,6 @@
 from time import sleep
 
-from dns_state import DNSState
+from .dns_state import DNSState
 
 
 class DNSUpdater(object):

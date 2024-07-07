@@ -2,8 +2,8 @@ from sys import argv
 
 from google.cloud import dns
 
-from dns_updater import DNSUpdater
-from application import Application
+from .dns_updater import DNSUpdater
+from .application import Application
 
 if __name__ == "__main__":
     app = Application(argv[1:])
