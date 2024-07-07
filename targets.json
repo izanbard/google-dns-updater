@@ -1,0 +1,13 @@
+{
+  "project_id": "<<TARGET_PROJECT>>",
+  "target_list": [
+    {
+      "zone": "<<TARGET_ZONE>>",
+      "domain": "TARGET_DOMAIN>>"
+    },
+    {
+      "zone": "<<TARGET_ZONE>>",
+      "domain": "TARGET_DOMAIN2>>"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+version: '3'
+services:
+  rx-control:
+    image: python:latest
+    restart: always
+    volumes:
+      - ./targets.json:./targets.json
+      - ./creds.json:./creds.json
+      - ./dns_state.pickle:./dns_state.pickle
+    command: "/bin/sh -c 'cd /rx; ./initiate.sh'"
