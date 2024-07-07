@@ -41,18 +41,18 @@ class Application:
             "--credentials_file",
             "-c",
             type=str,
-            default=os.environ.get('DNS_UPDATER_CREDENTIALS_FILE', "./creds.json")
+            default=os.environ.get('DNS_UPDATER_CREDENTIALS_FILE', "../creds.json")
         )
         parser.add_argument(
             "--targets_file",
             "-t",
             type=str,
-            default=os.environ.get('DNS_UPDATER_TARGETS_FILE', "./targets.json")
+            default=os.environ.get('DNS_UPDATER_TARGETS_FILE', "../targets.json")
         )
         parser.add_argument(
             "--pickle_file",
             "-p",
             type=str,
-            default=os.environ.get('DNS_UPDATER_PICKLE_FILE', "./dns_state.pickle")
+            default=os.environ.get('DNS_UPDATER_PICKLE_FILE', "../dns_state.pickle")
         )
         return parser.parse_args(self.raw_args)
