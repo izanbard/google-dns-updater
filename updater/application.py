@@ -30,7 +30,7 @@ class Application:
                 self.dns_state = pickle.load(fd)
                 self.dns_state.update_my_address()
                 self.update_required: bool = self.dns_state.dns_update_required()
-                logger.info(f"Loaded dns state from {self.args.pickle_file}")
+                logger.debug(f"Loaded dns state from {self.args.pickle_file}")
         else:
             logger.warn(f"No pickle file found at {Path(self.args.pickle_file)}, starting from scratch")
             self.update_required: bool = True
