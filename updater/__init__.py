@@ -12,9 +12,12 @@ loki_handler = LokiLoggerHandler(
 
 logger = logging.getLogger("google_dns_updater")
 logger.setLevel(logging.getLevelName(os.getenv("LOG_LEVEL", "INFO")))
-logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s]  %(message)s")
 
-loki_handler.setFormatter(logFormatter)
+logHandler = logging.StreamHandler(sys.stdout)
+logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s]  %(message)s")
+logHandler.setFormatter(logFormatter)
+logger.addHandler(logHandler)
+
 logger.addHandler(loki_handler)
 
 logger.debug("Starting updater...")
