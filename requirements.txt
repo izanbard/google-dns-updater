@@ -1,5 +1,5 @@
 ipaddress
 google-cloud-dns==0.35.0
 google-auth==2.38.0
-setuptools
 whatismyip
+loki-logger-handler

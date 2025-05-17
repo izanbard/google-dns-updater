@@ -1,10 +1,20 @@
+from loki_logger_handler.loki_logger_handler import LokiLoggerHandler
 import logging
 import sys
+import os
 
-logger = logging.getLogger("updater")
+loki_handler = LokiLoggerHandler(
+    url=os.getenv("LOKI_URL", "http://localhost:3100/loki/api/v1/push"),
+    labels={"application": "Google DNS Updater", "environment": "webpi"},
+    label_keys={},
+    timeout=10
+)
+
+logger = logging.getLogger("google_dns_updater")
+logger.setLevel(logging.getLevelName(os.getenv("LOG_LEVEL", "INFO")))
 logFormatter = logging.Formatter("%(asctime)s [%(levelname)-5.5s]  %(message)s")
-logHandler = logging.StreamHandler(sys.stdout)
-logHandler.setFormatter(logFormatter)
-logger.setLevel(logging.INFO)
-logger.addHandler(logHandler)
-logger.info("Starting updater...")
+
+loki_handler.setFormatter(logFormatter)
+logger.addHandler(loki_handler)
+
+logger.debug("Starting updater...")
