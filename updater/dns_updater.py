@@ -20,7 +20,7 @@ class DNSUpdater(object):
             if record.name == self.host and record.record_type == 'A':
                 for data in record.rrdatas:
                     if data != state.address:
-                        logger.debug(f"Old record: {record.name}, {record.record_type}, {self.TIME_TO_LIVE}, {data.data}")
+                        logger.debug(f"Old record: {record.name}, {record.record_type}, {self.TIME_TO_LIVE}, {data}")
                         self.changes.delete_record_set(record)
                         self.changes.add_record_set(
                             self.zone.resource_record_set(
